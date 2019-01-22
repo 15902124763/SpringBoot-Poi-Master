@@ -25,10 +25,10 @@
             upload: function () {
                 //console.log(this.upath);
                 var zipFormData = new FormData();
-                zipFormData.append('file', this.upath);//file是键，file是值，就是要传的文件，test.zip是要传的文件名
+                zipFormData.append('file', this.upath);//file要和@RequestParam("file")MultipartFile file对应好
                 let config = { headers: { 'Content-Type': 'multipart/form-data' } };
                 this.uping = 1;
-                this.$http.post('http://localhost:8080/cus/white/up/excel/0b8f669420744d22944aee5563edc085', zipFormData,config).then(function (response) {
+                this.$http.post('http://localhost:80/file/excel', zipFormData,config).then(function (response) {
                     console.log(response);
                     console.log(response.data);
                     console.log(response.bodyText);

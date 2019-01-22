@@ -1,7 +1,6 @@
 package com.yarm.poi.controller;
 
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.formula.functions.Index;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -10,6 +9,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.InputStream;
@@ -33,6 +33,7 @@ public class FileController {
     private final static String EXCEL_2007_UP = ".xlsx"; // 2007+ 版本的excel
 
     @RequestMapping("excel")
+    @ResponseBody
     public List<WhiteListExcelVo> fileUpload(@RequestParam("file")MultipartFile file){
         String fileName = file.getOriginalFilename();
         try {
@@ -58,11 +59,11 @@ public class FileController {
                     Object cellValue = this.getCellValue(cell);
                     if(cell != null){
                         switch (j){
-                            case 0 :
-                                wev.setpCode(cellValue.toString());
+                            case 0 : //第一列
+                                wev.setFirst(cellValue.toString());
                                 break;
-                            case 1:
-                                wev.setCpId(cellValue.toString());
+                            case 1: //第二列，依此类推
+                                wev.setSecond(cellValue.toString());
                                 break;
                             default:
                                 continue;

@@ -8,22 +8,22 @@ package com.yarm.poi.controller;
  * Des:
  */
 public class WhiteListExcelVo {
-    private String pCode;
-    private String cpId;
+    private String first;
+    private String second;
 
-    public String getpCode() {
-        return pCode;
+    public String getFirst() {
+        return first;
     }
 
-    public void setpCode(String pCode) {
-        this.pCode = pCode;
+    public void setFirst(String first) {
+        this.first = first;
     }
 
-    public String getCpId() {
-        return cpId;
+    public String getSecond() {
+        return second;
     }
 
-    public void setCpId(String cpId) {
-        this.cpId = cpId;
+    public void setSecond(String second) {
+        this.second = second;
     }
 }
